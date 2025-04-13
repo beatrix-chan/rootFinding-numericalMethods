@@ -71,7 +71,7 @@ plt.show()
 ```
 
 </details>
-<img src="assets/Figure-1.3.1.svg" alt="Figure 1.3.1: Example of Solving Graphically" />
+<img src="assets/Figure-1.3.1.png" alt="Figure 1.3.1: Example of Solving Graphically" />
 <p align="center"><i><b>Figure 1.3.1</b>: Example of Solving Graphically</i></p>
 
 ***
