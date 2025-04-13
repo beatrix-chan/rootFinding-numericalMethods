@@ -21,4 +21,4 @@
 
 - [Specific Requirements that weren't listed in the Guidance Document](guide.md)
 - [Theories](theories.md)
-- [Code explanations]()
+- [Code explanations](code-explanations.md)
