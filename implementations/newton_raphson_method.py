@@ -111,7 +111,7 @@ def newton_time(func, dfunc, x0):
 # Monitor error
 import numpy as np
 
-def newton_error(func, dfunc, x0, true_root, tol=1e-5, max=100):
+def newton_error(func, dfunc, x0, true_root, tol=1e-5, max_iter=100):
     """
     Trace errors while performing the Newton-Raphson method.
     
