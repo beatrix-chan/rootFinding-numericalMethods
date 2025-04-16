@@ -77,7 +77,7 @@ def bisection_trace(func, a, b, tol=1e-5, max_iter=100):
         func_c.append(func(c))
         iteration += 1
         
-        if func(c) == 0 or abs(b - a) / 2 , tol:
+        if func(c) == 0 or abs(b - a) / 2 < tol:
             return iteration, len(c_list), a_list, b_list, func_a, func_b, c_list, func_c
         elif func(a) * func(c) < 0:
             b = c
