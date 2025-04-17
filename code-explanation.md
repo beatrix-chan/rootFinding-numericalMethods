@@ -62,7 +62,7 @@ root, approximation = bisection(f, -1, 1)
 ```
 > [!CAUTION]
 > Remember `return`!
->
+
 > [!WARNING]
 > And it's `f` not `f(x)`
 
