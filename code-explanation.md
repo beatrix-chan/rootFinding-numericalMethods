@@ -11,7 +11,7 @@
 
 </details>
 
-> ![NOTE]
+> [!NOTE]
 > Here is a quick recap of what was mentioned in [theories.md](theories.md)
 > 
 > | Methods | Approximation Algorithm | Iteration formula |
