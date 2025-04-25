@@ -13,7 +13,8 @@
 
 ***
 
-> This repository is created to easy the process of collecting results for IFY Computer Science Formative 5 and Summative Assessment 1.
+> [!NOTE]
+> This repository is created to easy the process of collecting results for IFY Computer Science Formative 2 and Summative 1.
 
 ***
 
