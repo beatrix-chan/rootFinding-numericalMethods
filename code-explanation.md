@@ -41,8 +41,10 @@ In this section, we will look at how to implement these three numerical methods.
 > from bisection_method import bisection
 > from newton_raphson_method import newton_raphson
 > from secant_method import secant
+> ```
 
 ### 1.1 Parameters
+
 > [!TIP]
 > At the beginning of every functions, there are a multi-line strings within a pair of triple quotes. They are called "docstrings" under [PEP 257](https://peps.python.org/pep-0257/#multi-line-docstrings). If you use Visual Studio Code (no matter the classic or developer version), you can hover your cursor above a function's name and see a small container underneath your cursor. The content of that container is the docstring! It's equivalent to using `<function>?` in Jupyter Notebook and `print(<function>.__doc__)` in python.
 
@@ -60,6 +62,7 @@ def f(x):
 
 root, approximation = bisection(f, -1, 1)
 ```
+
 > [!CAUTION]
 > Remember `return`!
 
