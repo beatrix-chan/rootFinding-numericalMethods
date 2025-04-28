@@ -15,7 +15,7 @@ def bisection(func, a, b, tol=1e-5, max_iter=100):
         midpoints (list): List of midpoint approximations
     """
     if func(a) * func(b) >= 0:
-        raise ValueError("Function must have opposite signs at the endpoints")
+        raise ValueError("Function must have opposite signs at the endpoints.")
         
     midpoints = []
     
@@ -35,7 +35,7 @@ def bisection(func, a, b, tol=1e-5, max_iter=100):
 # Tracing Bisection Method    
 def bisection_trace(func, a, b, tol=1e-5, max_iter=100):
     """
-    Trace variables while performing the Bisection Method to find the root of a given function
+    Trace variables while performing the Bisection Method to find the root of a given function.
     
     Parameters:
         func (function): The function for which the root is to be found
