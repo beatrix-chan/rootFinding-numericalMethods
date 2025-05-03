@@ -9,6 +9,8 @@
 3. [Comparison Table](#3-comparison-table)
 4. [Plots of Convergence](#4-plots-of-convergence)
 
+> This came out more words than I have expected I'm sorry ;-;
+
 </details>
 
 > [!NOTE]
@@ -217,7 +219,7 @@ for _ in range(max_iter):
     midpoints.append(c)
 ```
 
-Here, the `for` loop begins. 
+Here, the `for` loop begins. Within the given range (`max_iter` in this case), perform the Bisection Method - add the two endpoints together and half the sum to get `c` (the midpoint of interval $\left [a, b\right ]$).
 
 ```python
     if func(c) == 0 or abs(b - a) / 2 < tol:
@@ -228,7 +230,38 @@ Here, the `for` loop begins.
         a = c
 ```
 
+This part checks if `if` the root is found or not. If the statement `c` equals to `0` is `true` or if `c` is lower than tolerance level, then the Bisection Method will return the root (`c`), and `midpoints` (list of approximations). Otherwise, it moves to the `elif` statement to change the new interval to $\left [a, c\right ]$ if the product of $f(a)$ and $f(c)$ is lesser than `0`, or moves to the `else` statement and update the interval to $\left [c, a\right ]$ (if the product of $f(a)$ and $f(c)$ is greater than `0`).
+
 #### 1.2.2 Newton-Raphson Method
+
+```python
+def newton_raphson(func, dfunc, x0, tol=1e05, max_iter=100)
+    approximations = [x0]
+
+    for _ in range(max_iter):
+        if abs(dfunc(x0)) < 1e-10:
+            raise ValueError("Derivative too small, method failed.")
+
+        x1 = x0 - func(x0) / dfunc(x0)
+        approximations.append(x1)
+
+        if abs(x1 - x0) < tol:
+            return x1, approximations
+
+        x0 = x1
+
+    raise ValueError("Newton-Raphson method did not converge.")
+```
+
+We have mentioned that `x0` in Newton-Raphson stands for initial approximation, therefore instead of an empty list, the approximation list already includes `x0`. The second `raise ValueError`statement works the same as the Bisection Method's, therefore I will only explain the one inside the `for` loop.
+
+```python
+for _ in range(max_iter):
+    if abs(dfunc(x0)) < 1e-10:
+        raise ValueError("Derivative too small, method failed.")
+```
+
+The method will fail if $f'(x_{n}) = 0$, but at the same time, we have set `tol` and `max_iter` to prevent infinite loops. We could do the same thing for `df(x0)` as well but different number of decimals than `tol`. We need to get the absolute value (`abs()`) of `x0` because negative numbers are logically lesser than the number of decimals stated as well but we're checking for decimal places so `df(x0)` must be positive.
 
 #### 1.2.3 Secant Method
 
