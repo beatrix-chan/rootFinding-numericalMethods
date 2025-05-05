@@ -70,7 +70,7 @@ git clone https://github.com/beatrix-chan/rootFinding-numericalMethods.git
 
 > This works the same in [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) too! ![](https://api.iconify.design/vscode-icons:file-type-vscode-insiders.svg)
 
-## Git Bash
+### Git Bash
 1. Go to the `Terminal` tab, and choose `New Terminal`.
 ![](assets/vscode_new-terminal.png)
 2. For Windows, the default terminal will be Powershell, click the dropdown icon and choose `git bash` from the drop-up menu. (MacOS and Linux might default to `bash` terminal already, do this only if it doesn't)
@@ -82,7 +82,7 @@ git clone https://github.com/beatrix-chan/rootFinding-numericalMethods.git
 
 > If you want to submit a pull request this way, check out [Pat's guide on Youtube](https://www.youtube.com/watch?v=For9VtrQx58)! This is an excellent guide.
 
-## Remote Repository
+### Remote Repository
 > [!IMPORTANT]
 > **Prerequiste**:
 > Forked repository to your own GitHub.
