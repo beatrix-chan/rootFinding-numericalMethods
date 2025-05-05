@@ -72,13 +72,13 @@ git clone https://github.com/beatrix-chan/rootFinding-numericalMethods.git
 
 ### Git Bash
 1. Go to the `Terminal` tab, and choose `New Terminal`.
-![](assets/vscode_new-terminal.png)
+![VS Code terminal](assets/vscode_new-terminal.png)
 2. For Windows, the default terminal will be Powershell, click the dropdown icon and choose `git bash` from the drop-up menu. (MacOS and Linux might default to `bash` terminal already, do this only if it doesn't)
-![](assets/vscode_git-bash.png)
+![VS Code Git Bash](assets/vscode_git-bash.png)
 3. For Windows, you can click the garbage bin icon next to the Powershell terminal at the list beside to kill it (if you feel bothered). Otherwise, you will see something like `username@computer-name MINGW64 ~$` in your git bash terminal.
-![](assets/vscode_bash-terminal.png)
+![VS Code Bash Terminal](assets/vscode_bash-terminal.png)
 4. Add `git clone https://github.com/beatrix-chan/rootFinding-numericalMethods.git` afterwards and it will start cloning to your workspace.
-![](assets/vscode_git-clone.png)
+![VS Code Git Clone](assets/vscode_git-clone.png)
 
 > If you want to submit a pull request this way, check out [Pat's guide on Youtube](https://www.youtube.com/watch?v=For9VtrQx58)! This is an excellent guide.
 
@@ -87,14 +87,8 @@ git clone https://github.com/beatrix-chan/rootFinding-numericalMethods.git
 > **Prerequiste**:
 > Forked repository to your own GitHub.
 
-1. Install the extensions.
-| [Marketplace](https://marketplace.visualstudio.com/vscode) | `Extensions` from Navigation bar |
-| :--------------------------------------------------------: | :------------------------------: |
-| ![](assets/marketplace.png) | ![](assets/vscode_extensions.png) |
-| ![](assets/marketplace-search.png) | ![](assets/vscode_extensions-search.png) |
-| ![](assets/marketplace-install-remoterepo.png) | ![](assets/vscode_install-remoterepo.png) |
-
+1. Install the extension [GitHub Repository](https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub).
 2. Open Command Prompt and search for `> Open Remote Repository` or just click that button from `Explorer`.
-![](assets/vscode_open-repository.png)
+![VS Code Open Repository](assets/vscode_open-repository.png)
 3. You should then be able to see a list of repositories that are in your GitHub. Choose the one you have forked!
-![](assets/vscode_repositories.png)
+![VS Code Repositories list](assets/vscode_repositories.png)
