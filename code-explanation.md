@@ -261,9 +261,138 @@ for _ in range(max_iter):
         raise ValueError("Derivative too small, method failed.")
 ```
 
-The method will fail if $f'(x_{n}) = 0$, but at the same time, we have set `tol` and `max_iter` to prevent infinite loops. We could do the same thing for `df(x0)` as well but different number of decimals than `tol`. We need to get the absolute value (`abs()`) of `x0` because negative numbers are logically lesser than the number of decimals stated as well but we're checking for decimal places so `df(x0)` must be positive.
+The method will fail if $f'(x_{n}) = 0$, but at the same time, we have set `tol` and `max_iter` to prevent infinite loops. We could do the same thing for `df(x0)` as well but different number of decimals than `tol`. We need to get the absolute value (`abs()`) of `x0` because negative numbers are logically lesser than the number of decimals stated as well but we're checking for decimal places so `df(x0)` must be positive. The reason why this must be in the `for` loop because this condition has to be checked every single time making sure $f'(x_{n})$ will not equal to $0$.
+
+```python
+    x1 = x0 - func(x0) / dfunc(x0)
+    approximations.append(x1)
+```
+
+This part of the code applies the Newton-Raphson method's iterative formula: $$x_{n + 1} = x_{n} - \frac{f(x_{n})}{f'(x_{n})} \tag{1}$$
+To explain how the code works, I will use the example I have used in [theories.md](theories.md). Let's plot out $f(x)$ with $x = 1$ as our initial approximation.
+
+<details>
+<summary>Code snippet</summary>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+    return 2 * (x**2) + 7 * x - 4
+
+def df(x):
+    return 4 * x + 7
+
+x0 = 1
+
+m = df(x0)
+b = f(x0) - m * x0
+
+x = np.linspace(-6, 6, 400)
+y = f(x)
+tangent = m * x + b
+
+plt.plot(x, y, c='#cac486', label='$f(x) = 2x^2 + 7x - 4$', zorder=1)
+plt.axvline(0, c='#807b81', zorder=0)
+plt.axhline(0, c='#807b81', zorder=0)
+plt.plot(x, tangent, c='#72969d', label='Tangent line at $x = {x0}$', zorder=2)
+plt.scatter(x0, f(x0), marker='*', c='#4b6e74', s=50, label='initial guess', zorder=3)
+
+plt.xlim(-0.8, 2.3)
+plt.ylim(-5, 20)
+plt.grid(True, c='grey', alpha=0.5)
+
+plt.xlabel('$x$')
+plt.ylabel('$f(x)$')
+plt.legend()
+
+plt.show()
+```
+
+</details>
+<img src="assets/Figure-1.2.2.1.png" alt="Figure-1.2.2.1">
+<p align="center"><i><b>Figure 1.2.2.1</b>: Tangent line of initial approximation</i></p>
+
+The Newton-Raphson Method finds the $x$ value when the tangent line passes through the $x$-axis. Let's zoom in to that point:
+
+<details>
+<summary>Code snippets</summary>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+    return 2 * (x**2) + 7 * x - 4
+
+def df(x):
+    return 4 * x + 7
+
+x0 = 1
+
+m = df(x0)
+b = f(x0) - m * x0
+
+x = np.linspace(-6, 6, 400)
+y = f(x)
+tangent = m * x + b
+
+plt.plot(x, y, c='#cac486', label='$f(x) = 2x^2 + 7x - 4$', zorder=1)
+plt.axvline(0, c='#807b81', zorder=0)
+plt.axhline(0, c='#807b81', zorder=0)
+plt.plot(x, tangent, c='#72969d', label=f'Tangent line at $x = {x0}$', zorder=2)
+# plt.scatter(x0, f(x0), marker='*', c='#4b6e74', s=50, label='initial guess', zorder=3)
+
+x_val = - b / m
+plt.scatter(x_val, 0, marker='*', c='#db8a90', s=80, label='Tangent = 0', zorder=3)
+plt.scatter(x_val, f(x_val), marker='*', c='#ae6168', s=80, label='Next approximation', zorder=4)
+plt.plot([x_val, x_val], [0, f(x_val)], c='#ecb8bb', ls='--', label='approximating', zorder=3)
+
+plt.xlim(0.48, 0.62)
+plt.ylim(-0.2, 0.8)
+plt.grid(True, c='grey', alpha=0.5)
+
+plt.xlabel('$x$')
+plt.ylabel('$f(x)$')
+plt.legend()
+
+plt.show()
+```
+
+</details>
+<img src="assets/Figure-1.2.2.2.png" alt="Figure 1.2.2.2" />
+<p align="center"><i><b>Figure 1.2.2.2</b>: Newton-Raphson computing the next approximation</i></p>
+
+As shown in the figure above, after it finds the point where the tangent line intersects with the $x$-axis to get the $x$ coordinate, that $x$ value becomes the next approximation. Which is the last line of the `for` loop:
+
+```python
+        x0 = x1
+```
+
 
 #### 1.2.3 Secant Method
+
+```python
+def secant(func, x0, x1, tol=1e-5, max_iter=100):
+    approximations = [x0, x1]
+
+    for _ in range(max_iter):
+        if abs(func(x1) - func(x0)) < 1e-10:
+            rasie ValueError("Denominator too small, method fails.")
+
+        x2 = x1 - func(x1) * (x1 - x0) / (func(x1) - func(x0))
+        approximations.append(x2)
+
+        if abs(x2 - x1) < tol:
+            return x2, approximations
+
+        x0, x1 = x1, x2
+    
+    raise ValueError("Secant Method did not converge.")
+```
+
+Explained almost everything before so I will just explain how the Secant Method's iterative formulae works like how I have done for the Newton-Raphson Method.
 
 ### 1.3 Returns
 
