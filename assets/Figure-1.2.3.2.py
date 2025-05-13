@@ -21,7 +21,7 @@ b = f(x0) - m * x0
 x_val = -b / m
 
 plt.scatter(x_val, 0, marker='*', c='#db8a90', s=80, label='$x$-intercept of Secant line', zorder=4)
-plt.scatter(x_val, f(x_val), marker='*', c='#ae6168', s=80, label='next approximation', zorder=4)
+plt.scatter(x_val, f(x_val), marker='*', c='#ae6168', s=80, label='new approximation', zorder=4)
 plt.plot([x_val, x_val], [0, f(x_val)], c='#ecb8bb', ls='--', label='approximating', zorder=3)
 
 plt.xlim(0.4, 0.5)
