@@ -392,9 +392,156 @@ def secant(func, x0, x1, tol=1e-5, max_iter=100):
     raise ValueError("Secant Method did not converge.")
 ```
 
-Explained almost everything before so I will just explain how the Secant Method's iterative formulae works like how I have done for the Newton-Raphson Method.
+I will explain the Secant method similarly to how I have explained the Newton-Raphson Method.
+
+<details>
+
+<summary>Code snippet</summary>
+
+> ![NOTE]
+> Assuming that we used `a = 0.25` and `b = 1.75` as our initial interval in the Bisection Method, we will also use these values for the Secant Method because finding the "previous" approximation is impratical.
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+    return 2 * (x**2) + 7 * x - 4
+
+x0, x1 = 0.25, 1.75
+
+x = np.linspace(-6, 6, 400)
+y = f(x)
+
+plt.plot(x, y, c='#cac486', label='$f(x) = 2x^2 + 7x - 4$', zorder=1)
+plt.axhline(0, c='#807b81', zorder=0)
+plt.axvline(0, c='#807b81', zorder=0)
+plt.plot([x0, x1], [f(x0), f(x1)], c='#72969d', label=f'Secant line between $x = {x0}$ and $x = ${x1}$', zorder=2)
+plt.scatter([x0, x1], [f(x0), f(x1)], marker='*', c='#4b6e74', s=50, label='initial guesses', zorder=3)
+
+plt.xlim(0, 2)
+plt.ylim(-5, 20)
+plt.grid(True, c='grey', alpha=0.5)
+
+plt.xlabel('$x$')
+plt.ylabel('$f(x)$')
+plt.legend()
+
+plt.show()
+```
+
+</details>
+<img src="assets/Figure-1.2.3.1.png" alt="Figure 1.2.3.1" />
+<p align="center"><i><b>Figure 1.2.3.1</b>: Secant line between initial approximations</i></p>
+
+A tangent line focuses on the slope of a coordinate only and doesn't take any consider which involves any other coordinates. For a secant line, the linear line connects two specified coordinates.
+
+<details>
+
+<summary>Code snippet</summary>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+    return 2 * (x**2) + 7 * x - 4
+
+x0, x1 = 0.25, 1.75
+
+x = np.linspace(-6, 6, 400)
+y = f(x)
+
+plt.plot(x, y, c='#cac486', label='$f(x) = 2x^2 + 7x - 4$', zorder=1)
+plt.axhline(0, c='#807b81', zorder=0)
+plt.axvline(0, c='#807b81', zorder=0)
+plt.plot([x0, x1], [f(x0), f(x1)], c='#72969d', label=f'Secant line between $x = {x0}$ and $x = {x1}$', zorder=2)
+# plt.scatter([x0, x1], [f(x0), f(x1)], marker='*', c='#4b6e74', s=50, label='initial guesses', zorder=3)
+
+m = (f(x1) - f(x0)) / (x1 - x0)
+b = f(x0) - m * x0
+
+x_val = -b / m
+
+plt.scatter(x_val, 0, marker='*', c='#db8a90', s=80, label='$x$-intercept of Secant line', zorder=4)
+plt.scatter(x_val, f(x_val), marker='*', c='#ae6168', s=80, label='new approximation', zorder=4)
+plt.plot([x_val, x_val], [0, f(x_val)], c='#ecb8bb', ls='--', label='approximating', zorder=3)
+
+plt.xlim(0.4, 0.5)
+plt.ylim(-1, 1)
+plt.grid(True, c='grey', alpha=0.5)
+
+plt.xlabel('$x$')
+plt.ylabel('$f(x)$')
+plt.legend()
+
+plt.show()
+```
+</details>
+<img src="assets/Figure-1.2.3.2.png" alt="Figure-1.2.3.2" />
+<p align="center"><i><b>Figure 1.2.3.2</b>: Secant method computing for next approximation</i></p>
+
+Similar to the Newton-Raphson Method, the Secant Method takes the $x$-intercept of the Secant line as its new approximation.
+
+```python
+        x0, x1 = x1, x2
+```
+
+<details>
+
+<summary>Code snippet</summary>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+    return 2 * (x**2) + 7 * x - 4
+
+x0, x1 = 0.25, 1.75
+
+x = np.linspace(-6, 6, 400)
+y = f(x)
+
+plt.plot(x, y, c='#cac486', label='$f(x) = 2x^2 + 7x - 4$', zorder=1)
+plt.axhline(0, c='#807b81', zorder=0)
+plt.axvline(0, c='#807b81', zorder=0)
+plt.scatter([x0, x1], [f(x0), f(x1)], marker='*', c='#4b6e74', s=50, label='initial guesses', zorder=3)
+
+m = (f(x1) - f(x0)) / (x1 - x0)
+b = f(x0) - m * x0
+
+x_val = -b / m
+
+plt.scatter(x_val, f(x_val), marker='*', c='#ae6168', s=50, label='new approximation', zorder=3)
+plt.scatter([x1, x_val], [f(x1), f(x_val)], marker='o', s=130, fc='none', ec='r', label='next approximations', zorder=4)
+
+plt.xlim(0, 2)
+plt.ylim(-5, 20)
+plt.grid(True, c='grey', alpha=0.5)
+
+plt.xlabel('$x$')
+plt.ylabel('$f(x)$')
+plt.legend()
+
+plt.show()
+```
+</details>
+<img src="assets/Figure-1.2.3.3.png" alt="Figure 1.2.3.3" />
+<p align="center"><i><b>Figure 1.2.3.3</b>: Secant method updating approximation values</i></p>
+
+The Secant Method then updates its approximation values for the next iteration: its "current" approximation becomes "previous approximation", "new approximation" becomes "current approximation".
 
 ### 1.3 Returns
+
+| returns | Bisection | Newton-Raphson | Secant |
+| :-----: | :-------: | :------------: | :----: |
+| root    | `c`       | `x1`           | `x2`   |
+| list of approximations | `midpoints` | `approximations` | `approximations` |
+
+> [!IMPORTANT]
+> You will need to show the root **with** certain number of decimal places to display how the result differs with each another. For example, if the Newton-Raphson method and Secant method also output as `1.00000000`, you should do formatted print for both of them until there's a difference between their decimal places. Although we have went through before that computers store decimal numbers as recursive divisable binary numbers, this also shows that the two methods did not have the same result after approximating. We will go through more in [Comparison Table](#3-comparison-table)<br />
+> For the list of approximations, you will not need to show it in anywhere (as in list form), it's just for output purposes. Certainly, you can count how approximations each method made before it can compute the root. i will go through more about tracing in [Trace Tables](#2-trace-tables) and why it matters to differentiate number of **iterations** and **approximations**.
 
 ---
 
