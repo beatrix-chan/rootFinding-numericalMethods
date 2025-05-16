@@ -540,7 +540,7 @@ The Secant Method then updates its approximation values for the next iteration: 
 | list of approximations | `midpoints` | `approximations` | `approximations` |
 
 > [!IMPORTANT]
-> You will need to show the root **with** certain number of decimal places to display how the result differs with each another. For example, if the Newton-Raphson method and Secant method also output as `1.00000000`, you should do formatted print for both of them until there's a difference between their decimal places. Although we have went through before that computers store decimal numbers as recursive divisable binary numbers, this also shows that the two methods did not have the same result after approximating. We will go through more in [Comparison Table](#3-comparison-table)<br />
+> You will need to show the root **with** certain number of decimal places to display how the result differs with each another. For example, if the Newton-Raphson method and Secant method also output as `1.00000000`, you should do formatted print for both of them until there's a difference between their decimal places. Although we have went through before that computers store decimal numbers as recursive divisable binary numbers, this also shows that the two methods did not have the same result after approximating. We will go through more in [Comparison Table](#3-comparison-table).<br />
 > For the list of approximations, you will not need to show it in anywhere (as in list form), it's just for output purposes. Certainly, you can count how approximations each method made before it can compute the root. i will go through more about tracing in [Trace Tables](#2-trace-tables) and why it matters to differentiate number of **iterations** and **approximations**.
 
 ---
