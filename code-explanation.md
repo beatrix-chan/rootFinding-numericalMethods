@@ -13,6 +13,9 @@
 
 </details>
 
+> [!IMPORTANT]
+> Put the methods (the `.py` files) in the **same** folder as where you run the codes. I am only seperating them into the [implementations](/implementations/) folder so they can be searched and downloaded/copied easily.
+
 > [!NOTE]
 > Here is a quick recap of what was mentioned in [theories.md](theories.md)
 > 
@@ -547,6 +550,80 @@ The Secant Method then updates its approximation values for the next iteration: 
 
 ## 2. Trace Tables
 
+A trace table is used to monitor how each variable changes. For each method, what variables they are monitoring are different, but in the functions I have set, there are two that are the same for every single method's trace function. The following pseudocode is the general stucture for the trace function of each method:
+
+```python
+def method_trace(func, *var, tol=1e-5, max_iter=100):
+    """
+    Trace variables while performing the (method name) Method to find the root of a given function.
+
+    Paramters:
+        func (function): The function for which the root is to be found
+        *var (float): variables to be tracked
+        tol (float): Tolerance level for convergence
+        max_iter (int): Maximum number of iterations allowed
+
+    Returns:
+        iteration (int): Number of iterations performed
+        approximated (int): Number of approximation made
+        *var_list (list): Variables tracked
+    """
+    # raise ValueError line
+
+    approximations = [] # Replaced by c_list in bisection method, already have initial approximations for the other two methods
+    iteration = 0
+    *var_list = []
+
+    for _ in range(max_iter):
+        var_list.append(var)
+
+        return_var = # iteration function
+
+        approximations.append(return_var)
+        iteration += 1
+
+        if abs() < tol:
+            return iteration, len(approximations), *var_list
+        
+        # other operations
+
+    # raise ValueError for method did not converge
+```
+
+The `iteration` variable acts as a counter. If an iteration successfully performed, it adds one to the counter. While for `approximations`, it counts how many approximations are there in the list after the approximation list is created. The number of iteration and approximations are **not** the same! It might be the same for the case of the Bisection Method, but not necessary for Newton-Raphson and Secant Methods. For these two, the initial guesses/approximations are included in `approximations` before any iteration even started.
+
+These two variables can also be shown in [Comparison Tables](#3-comparison-table). But in terms of iteration tables, you can use `pandas.DataFrame` to create it while these variables are still stored at that moment you ran the codes:
+
+```python
+from bisection_method import bisection_trace
+
+def f(x):
+    return # function
+
+bisection_iter, bisection_approx, a, b, fa, fb, c, fc = bisection_trace(f, 0.25, 1.75)
+
+# Example of creating an iteration table for the bisection method 
+import pandas as pd
+
+bisection_df = pd.DataFrame({
+    'iteration': range(1, bisection_iter),
+    'a': a,
+    'b': b,
+    'fa': fa,
+    'fb': fb,
+    'c': c,
+    'fc': fc
+})
+
+# Output result to a CSV file
+bisection_df.to_csv('bisection_trace.csv', index=False)
+```
+
+> [!TIP]
+> You can export the DataFrame into a csv and open it on Excel/LibreOffice Calc to view them in scientific notation. Then, go to [tableconvert.com](https://tableconvert.com/excel-to-markdown), copy and paste all the cells with your collected data into the space at the top of the page, scroll down and you will find it rendered to Markdown. You can copy and paste it directly into your report!
+
+> [!NOTE]
+> You can check the example output [here](https://onecompiler.com/python/43j25ntd2).
 
 ---
 
