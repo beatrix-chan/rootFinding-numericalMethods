@@ -11,15 +11,11 @@
 > git clone https://github.com/beatrix-chan/rootFinding-numericalMethods.git
 > ```
 
-***
-
-> [!NOTE]
-> This repository is created to easy the process of collecting results for IFY Computer Science Formative 2 and Summative 1.
-
-***
+---
 
 ## Contents of Repository
 
-- [Specific Requirements that weren't listed in the Guidance Document](guide.md)
+- [Bash Guide](bash-guide.md)
 - [Theories](theories.md)
 - [Code explanations](code-explanations.md)
+- [Implementations](/implementations/)
