@@ -639,6 +639,54 @@ Here are a few things you can put in your comparison table:
 > [!NOTE]
 > For `times`, it's not really required to be shown in the report and it shouldn't fit into the comparison table. But since I've chose to run it 100 times to maximise the execution time's accuracy, I can compare how each methods' time change repeating the same operation over and over again by plotting them out. Again, this makes your report more comprehensive, but you will need to do more explanations in your Result section. For `errors`, you can put them into iteration tables, or only plot them out and compare. (Or you can just not show them, doesn't really matter, but it shows how the errors decrease over time a method approach closer to the root.
 
+> [!TIP]
+> You can choose to do a Time VS Error Trade-Off plot to show the relationship between CPU time and Error approximation. But we were never taught to do anything like that during our programming classes, I suggest you to ask GitHub copilot to plot one for you if that's something you wanted to do.
+
 ---
 
 ## 4. Plots of Convergence
+
+> [!NOTE]
+> This is a personal reference, but I encourage you to use the same colour coding for the same purposes across your graphs too. For example, if you have been using `r` or `red` to represent your approximated root in the Bisection method, then you should do the same for Newton-Raphson and Secant; if you have been using `b` or `blue` to represent $f(x)$ in the Bisection Method, then continue in Newton-Raphson and Secant. I just think that it's easier to read this way like all the plots have similaries/same elements in there.
+
+I don't have a lot to correct from the lab notebook during week 5 for how to plot. The only thing I would modify is to use ipywidgets to zoom into the plots so the plots won't look like it has choppy ends.
+
+**Prerequisites**: Install `ipywidgets` and `ipympl`
+
+If you are using [Anaconda/miniconda virtual environment](https://www.anaconda.com/docs/tools/working-with-conda/environments) (with [mamba](https://anaconda.org/conda-forge/mamba) and [jupyterlab](https://anaconda.org/conda-forge/jupyterlab) installed via [conda-forge](https://anaconda.org/conda-forge) channel), you can do the following in your terminal:
+```bash
+mamba install ipywidgets ipympl
+```
+
+> [!TIP]
+> Feel free to check out my [Rentry](https://rentry.co/xgzmwapd) page that listed how to set up your environments using Miniconda on Linux Ubuntu Virtual Machine and add [other language kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) into jupyterlab!
+
+Otherwise, if you're not really using a virtual environment, you can install [ipywidgets](https://pypi.org/project/ipywidgets/) and [ipympl](https://pypi.org/project/ipympl/) through [`PyPi`](https://pypi.org/)
+```bash
+pip install ipywidgets ipympl
+```
+
+> [!NOTE]
+> You can find `ipympl`'s repository [here](https://github.com/matplotlib/ipympl) and documentation [here](https://matplotlib.org/ipympl/)
+
+**After fulfilled Prerequisites**:
+
+In your `.ipynb` Jupyter Notebook file, **in a code cell**, type the following:
+
+```python
+# Do this to confirm installation
+%pip install ipywidgets
+%pip install ipympl
+
+# Activate the matplotlib widget
+import matplotlib.pyplot as plt
+%matplotlib widget
+```
+
+Then you can do your normal plotting, but set the `x` value to a relatively secure range that it will probably cover all the approximations that will ever exist (e.g. `x = np.linspace(-6, 6, 400)`), if you are someone who hates using `plt.xlim()` and `plt.ylim()`, the good thing about using `ipympl`/`%matplotlib widget` is that it allows you to do your normal plotting, then youc an adjust after output by zooming in, adjust window view, adjust output ratio, etc. And there's a save button as well so you can save the figure without using `plt.savefig()` and needing to save it again and again because realised something was wrong after you output it.
+
+---
+
+## Conclusions
+
+Apologies that I finished this repository relatively late, but hopefully this will still be helpful. The biggest take away from this project is how to manipulate your functions (implementations) to get results you need, and also learn how to use `ipywidgets` for your convenience. Hopefully this repository still helps 😺. Good luck 👍.
