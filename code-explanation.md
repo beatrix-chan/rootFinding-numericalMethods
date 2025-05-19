@@ -629,6 +629,15 @@ bisection_df.to_csv('bisection_trace.csv', index=False)
 
 ## 3. Comparison Table
 
+Here are a few things you can put in your comparison table:
+- Approximated roots
+- Number of Iterations
+- Number of Approximations
+- CPU times (average, fastest, slowest)
+- Errors (Relative and Percentage)
+
+> [!NOTE]
+> For `times`, it's not really required to be shown in the report and it shouldn't fit into the comparison table. But since I've chose to run it 100 times to maximise the execution time's accuracy, I can compare how each methods' time change repeating the same operation over and over again by plotting them out. Again, this makes your report more comprehensive, but you will need to do more explanations in your Result section. For `errors`, you can put them into iteration tables, or only plot them out and compare. (Or you can just not show them, doesn't really matter, but it shows how the errors decrease over time a method approach closer to the root.
 
 ---
 
