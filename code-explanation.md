@@ -74,7 +74,7 @@ root, approximation = bisection(f, -1, 1)
 > [!WARNING]
 > And it's `f` not `f(x)` when it becomes a parameter of another function.
 
-Other than `func`, the three of them also have common parameters `tol` and `max_iter`. The docstring sort of explain it already but just to expand on that slightly, their purpose is similar to machine epsilon ($\epsilon$) from Formative Assessment 1. `tol` is the predefined tolerance level to check for convergence, it specifies tha maximum allowed error (because root approximations are stored as float, loosing precision). `max_iter` is used in the for loop outside the methods' iteration formula, which means the maximum number of times this formula can be used is 100 times not caring if convergent ever happened.
+Other than `func`, the three of them also have common parameters `tol` and `max_iter`. The docstring sort of explain it already but just to expand on that slightly, their purpose is similar to machine epsilon ($\epsilon$) from Formative Assessment 1. `tol` is the predefined tolerance level to check for convergence, it specifies the maximum precision error allowed (because root approximations are stored as float, loosing precision). `max_iter` is used in the for loop outside the methods' iteration formula, which means the maximum number of times this formula can be used is 100 times not caring if convergent ever happened.
 
 #### 1.1.1 Bisection Method
 
