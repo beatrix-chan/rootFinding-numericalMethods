@@ -37,7 +37,7 @@ def newton_trace(func, dfunc, x0, tol=1e-5, max_iter=100):
     
     Parameters:
         func (function): The function for which the root is to be found
-        dfunc (function): The derivative of dfunc
+        dfunc (function): The derivative of func
         x0 (float): Initial approximation
         tol (float): Tolerance level for convergence
         max_iter (int): Maximum number of iterations allowed
@@ -59,7 +59,7 @@ def newton_trace(func, dfunc, x0, tol=1e-5, max_iter=100):
     
     for _ in range(max_iter):
         if abs(dfunc(x0)) < 1e-10:
-            raise ValueError("Derivative too small, method fails.")
+            raise ValueError("Derivative too small, method failed.")
             
         current_x.append(x0)
         func_x.append(func(x0))
@@ -116,7 +116,7 @@ def newton_error(func, dfunc, x0, true_root, tol=1e-5, max_iter=100):
     Trace errors while performing the Newton-Raphson method.
     
     Parameters:
-        func (function): The functino for which the root is to be found
+        func (function): The function for which the root is to be found
         dfunc (function): The derivative of func
         x0 (float): Initial approximation
         true_root (float): Exact value of the root computing for
@@ -132,7 +132,7 @@ def newton_error(func, dfunc, x0, true_root, tol=1e-5, max_iter=100):
     
     for _ in range(max_iter):
         if abs(dfunc(x0)) < 1e-10:
-            raise ValueError("Derivative too small, method fails.")
+            raise ValueError("Derivative too small, method failed.")
             
         x1 = x0 - func(x0) / dfunc(x0)
         errors.append(x1 - true_root)
