@@ -18,7 +18,7 @@ def secant(func, x0, x1, tol=1e-5, max_iter=100):
     
     for _ in range(max_iter):
         if abs(func(x1) - func(x0)) < 1e-10:
-            raise ValueError("Denominator too small, method fails.")
+            raise ValueError("Denominator too small, method failed.")
             
         x2 = x1 - func(x1) * (x1 - x0) / (func(x1) - func(x0))
         approximations.append(x2)
@@ -38,7 +38,7 @@ def secant_trace(func, x0, x1, tol=1e-5, max_iter=100):
     Parameters:
         func (function): The function for which the root is to be found
         x0 (float): First initial approximation
-        x1 (float): Second intiial approximation
+        x1 (float): Second initial approximation
         tol (float): Tolerance level for convergence
         max_iter (int): Maximum number of iterations allowed
         
@@ -121,7 +121,7 @@ def secant_error(func, x0, x1, true_root, tol=1e-5, max_iter=100):
     Parameters:
         func (function): The function for which the root is to be found
         x0 (float): First initial approximation
-        x1 (float): Second intiial approximation
+        x1 (float): Second initial approximation
         true_root (float): Exact value of the root computing for
         tol (float): Tolerance level for convergence
         max_iter (int): Maximum number of iterations allowed
