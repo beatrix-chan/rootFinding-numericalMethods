@@ -137,7 +137,7 @@ def bisection_error(func, a, b, true_root, tol=1e-5, max_iter=100):
         percent_error (float): Percentage error between approximated root and true_root
     """
     if func(a) * func(b) >= 0:
-        raise ValueError("Function must have opposite signs at the opposite signs at the endpoints.")
+        raise ValueError("Function must have opposite signs at the endpoints.")
         
     errors = []
     
