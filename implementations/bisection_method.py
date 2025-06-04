@@ -84,7 +84,7 @@ def bisection_trace(func, a, b, tol=1e-5, max_iter=100):
         else:
             a = c
             
-    raise ValueError("Bisection method did not converge")
+    raise ValueError("Bisection method did not converge.")
 
 # Monitor CPU time    
 import time
